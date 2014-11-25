@@ -1,20 +1,24 @@
 - hosts: all
   sudo: True
+
   vars:
     graphite:
       version: master
-      timezone: Europe/Paris
+      timezone: US/NewYork
       workers: 4
       host: 0.0.0.0
       server: graphite.local
       secret_key: 'ob3sow^ik#4q(k5*tgw&6j+osyr^@0jus$yd+-#^&^d#%yim1!'
+
     carbon:
       host: 0.0.0.0
       ssl: no
+
     db_graphite:
       name: graphite
       user: graphite
       password: graphite
+
   roles:
     - common
     - python

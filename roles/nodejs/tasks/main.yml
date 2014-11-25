@@ -1,8 +1,13 @@
-# Check if node is installed somewhere in the path or at the default location
-- name: test if nodejs is installed
-  shell: /usr/bin/test -n "$(node -v 2> /dev/null)" -o -n "$(/usr/local/bin/node -v 2> /dev/null)"
-  ignore_errors: True
-  register: node_installed
+- name: install Node.js package(s) for Redhat/CentOS
+  yum: pkg={{ item }} state=latest
+  with_items:
+    - nodejs
+    - npm
+  when: ansible_os_family == "RedHat"
 
-- include: node.yml
-  when: node_installed.rc == 1
+- name: install Node.js package(s) for Debian/Ubuntu
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - nodejs
+    - npm
+  when: ansible_os_family == "Debian"

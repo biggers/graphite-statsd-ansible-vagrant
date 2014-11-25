@@ -1,3 +1,10 @@
-### Vagrant ###
 .vagrant/
 vagrant_ansible_inventory*
+.vagrant
+*~
+*.pyc
+*.pyo
+*.orig
+*.log
+*.deb
+*.gz
