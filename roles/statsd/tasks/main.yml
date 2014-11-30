@@ -1,5 +1,5 @@
 - name: Install statsd from GitHub
-  git: repo=https://github.com/etsy/statsd.git dest=/opt/statsd update=no
+  git: repo=https://github.com/etsy/statsd.git dest=/opt/statsd version=be2a3fb1021ef7a1a70ff8e3e12ca6f4f91ff75d
 
 - name: Configure statsd
   template: src=localConfig.js.j2 dest=/opt/statsd/localConfig.js

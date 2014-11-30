@@ -3,7 +3,7 @@
 
   vars:
     graphite:
-      version: master
+      version: 8f13d44d446acfaecefb438f1f4b8f56e5164092
       timezone: US/NewYork
       workers: 4
       host: 0.0.0.0
@@ -11,6 +11,7 @@
       secret_key: 'ob3sow^ik#4q(k5*tgw&6j+osyr^@0jus$yd+-#^&^d#%yim1!'
 
     carbon:
+      version: dec9dfed89ea19e756fd5a45ff6462874b03b904
       host: 0.0.0.0
       ssl: no
 
@@ -19,6 +20,30 @@
       user: graphite
       password: graphite
 
+    whisper:
+      version: 7e7631b51197539e5b09f9f9aca565d9d13dd3fa
+
+    python_deps:
+      - name: psycopg2
+        version: 2.5.4
+      - name: django
+        version: 1.6.8
+      - name: django-tagging
+        version: 0.3.4
+      - name: python-memcached
+        version: 1.53
+      - name: pytz
+        version: 2014.9
+      - name: pyparsing
+        version: 2.0.3
+      - name: gunicorn
+        version: 19.1.1
+      - name: twisted
+        version: 14.0.2
+      - name: cairocffi
+        version: 0.6
+    # Drop-in replacement for py2cairo. Can be installed inside virtualenv. See http://stackoverflow.com/questions/11491268/install-pycairo-in-virtualenv
+      
   roles:
     - common
     - python

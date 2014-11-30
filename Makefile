@@ -24,6 +24,9 @@ vg_provision:
 	script -c "vagrant provision --provision-with ansible" ${LOG}
 
 LOG = anpb.$$$$.log
+WTASK = 
 VERBOSE =
 ans_play:
-	script -c "ansible-playbook -i ./ansible_hosts ${VERBOSE} --timeout 30  --forks 1  graphite.yml" ${LOG}
+	echo "--start-at-task=statsd"
+	vagrant up
+	script -c "ansible-playbook -i ./ansible_hosts ${VERBOSE} "${WTASK}" --timeout 30  --forks 1  graphite.yml" ${LOG}
