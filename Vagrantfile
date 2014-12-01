@@ -8,8 +8,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.box = "ubuntu/trusty64"
 
   config.vm.box = "chef/centos-7.0"
-  config.vm.network :private_network, ip: "192.168.10.20"
-  config.vm.network :forwarded_port, guest: 8080, host: 8888
+  # config.vm.network :private_network, ip: "192.168.10.20"
+
+  config.vm.network :forwarded_port, guest: 2003, host: 2003
+  config.vm.network :forwarded_port, guest: 2004, host: 2004
+  config.vm.network :forwarded_port, guest: 7002, host: 7002
+  config.vm.network :forwarded_port, guest:   80, host: 8080
   config.vm.network :forwarded_port, guest: 8125, host: 8125
 
   config.vm.provider "virtualbox" do |vb|
@@ -25,19 +29,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #end 
 
   # Playbook notes:
-  #   roles/foo: 
-  #   roles/foo: 
-  #   roles/foo: 
   #   roles/nodejs: (now) using EPEL rpm; good enough?
   #   roles/statsd: Github, define fixed, 'stable' version
-  #   roles/foo: 
-  #   roles/foo: 
+  #   roles/X, add packages:  sudo yum install emacs-nox elinks nmap-ncat
+  #   roles/Z: 
   #   
 
+# vagrant provision --provision-with shell
   config.vm.provision :shell, :inline => <<-SCRIPT
-    echo "**** Shell-provisioning this Vagrant box... or NOT! :)a"
+    echo "**** Shell-provisioning this Vagrant box... or NOT! :)"
+    sudo yum -y install emacs-nox elinks nmap-ncat
 SCRIPT
-
 
 end
 

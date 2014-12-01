@@ -14,10 +14,11 @@ nginx_sites:
  - server:
     file_name: foo
     listen: 8080
-    server_name: localhost
+    server_name: 0.0.0.0
     root: "/tmp/site1"
     location1: {name: /, try_files: "$uri $uri/ /index.html"}
     location2: {name: /images/, try_files: "$uri $uri/ /index.html"}
+
  - server:
     file_name: bar
     listen: 9090
